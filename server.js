@@ -12,12 +12,11 @@ var app = express();
 app.use(morgan('dev'));
 
 require('./config/db.config');
+//load routing level middlewares
+
+
+
 //inbuilt middlewares
-
-
-//routing level middlewares
-
-
 
 
 app.use(function(req, res, next){
