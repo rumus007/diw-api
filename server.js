@@ -11,6 +11,7 @@ var morgan = require('morgan');
 var app = express();
 app.use(morgan('dev'));
 
+require('./config/db.config');
 //inbuilt middlewares
 
 
