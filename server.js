@@ -13,11 +13,27 @@ app.use(morgan('dev'));
 
 require('./config/db.config');
 //load routing level middlewares
+var authRoute = require('./routes/auth.route')();
 
 
 
 //inbuilt middlewares
+app.use(bodyParser.urlencoded({
+    extended:true
+}));
+app.use(bodyParser.json());
+app.use('/file', express.static(path.join(__dirname,'public')));
+app.get('/', function(req,res, next){
+    res.end('response from server');
+});
 
+
+//routing level midddlewares
+app.get('/check', function(req, res, next){
+    res.send('OK from server');
+})
+
+app.use('/auth', authRoute);
 
 app.use(function(req, res, next){
     res.status(404)
