@@ -14,6 +14,7 @@ app.use(morgan('dev'));
 require('./config/db.config');
 //load routing level middlewares
 var authRoute = require('./routes/auth.route')();
+var apiRoute = require('./api.routes');
 
 
 
@@ -34,6 +35,7 @@ app.get('/check', function(req, res, next){
 })
 
 app.use('/auth', authRoute);
+app.use('/api', apiRoute);
 
 app.use(function(req, res, next){
     res.status(404)

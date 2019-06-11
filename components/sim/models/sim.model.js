@@ -2,7 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SimSchema = new Schema({
-    company: String,
+    company: {
+        type: String,
+        enum: ['ncell','ntc','smart'],
+        required: true
+    },
     quantity: {
         type: Number,
         required: true
@@ -17,7 +21,7 @@ var SimSchema = new Schema({
     },
     rechargeType: {
         type: Number,
-        enum: [1,2,3] //1 for recharge car, 2 for master sim, 3 for online 
+        enum: [1,2,3] //1 for recharge card, 2 for master sim, 3 for online 
     }
 },
 {
