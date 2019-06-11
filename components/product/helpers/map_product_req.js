@@ -1,8 +1,6 @@
 module.exports = function (product, productDetails) {
     if (productDetails.name)
         product.name = productDetails.name;
-    if (productDetails.category)
-        product.category = productDetails.category;
     if (productDetails.quantity)
         product.quantity = productDetails.quantity;
     if (productDetails.soldPrice)

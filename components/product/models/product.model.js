@@ -6,10 +6,6 @@ var productSchema = new Schema({
         type: String,
         required: true,
     },
-    category:{
-        type: String,
-        required: true,
-    },
     quantity: Number,
     soldPrice: Number,
     costPrice: Number,
@@ -18,5 +14,8 @@ var productSchema = new Schema({
     timestamps: true
 });
 
-var productModule = mongoose.model('product', productSchema);
-module.exports = productModule;
+var labModule = mongoose.model('lab', productSchema);
+var handicraftModule = mongoose.model('handicraft', productSchema);
+module.exports = {
+    labModule, handicraftModule
+}
