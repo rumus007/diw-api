@@ -4,7 +4,7 @@ var simCtrl = require("./../controller/sim.controller");
 
 
 router.route('/')
-    .get()
+    .get(simCtrl.get)
     .post(simCtrl.post);
 
 router.route('/search')
@@ -12,8 +12,8 @@ router.route('/search')
     .post();
 
 router.route('/:id')
-    .get()
-    .put()
-    .delete();
+    .get(simCtrl.getById)
+    .put(simCtrl.put)
+    .delete(simCtrl.remove);
 
 module.exports = router;
