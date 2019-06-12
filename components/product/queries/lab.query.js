@@ -28,16 +28,43 @@ function insert(data){
     });
 }
 
-function update(){
 
+function update(id, data){
+    return new Promise(function(resolve, reject){
+        labModel.findById(id)
+            .exec(function(err, labProd){
+                if(err){
+                    reject(err);
+                }else{
+                    if(labProd){
+                        mapLab(labProd, data);
+                        labProd.save(function(err, update){
+                            if(err){
+                                reject(err);
+                            }else{
+                                resolve(update);
+                            }
+                        });
+                    }else{
+                        reject({
+                            message: 'Lab Product not found',
+                            status: 400
+                        });
+                    }
+                }
+            });
+    });
 }
 
-function update(){
-
-}
-
-function remove(){
-
+function remove(id, cb){
+    labModel.findByIdAndDelete(id)
+        .exec(function(err, deleted){
+            if(err){
+                cb(err);
+            }else{
+                cb(null, deleted);
+            }
+        });
 }
 
 module.exports = {

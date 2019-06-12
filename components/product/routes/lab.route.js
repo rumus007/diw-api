@@ -11,8 +11,8 @@ router.route('/search')
     .post();
     
 router.route('/:id')
-    .get()
-    .put()
-    .delete();
+    .get(labCtrl.getById)
+    .put(labCtrl.put)
+    .delete(labCtrl.remove);
     
 module.exports = router;

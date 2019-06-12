@@ -57,7 +57,14 @@ function remove(req, res, next){
         if(err){
             next(err);
         }else{
-            res.status(200).json(deleted);
+            if(deleted){
+                res.status(200).json(deleted);
+            }else{
+                next({
+                    message: "Cannot find sim detail",
+                    status: 400
+                })
+            }
         }
     });
 }
