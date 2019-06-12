@@ -6,8 +6,14 @@ var productSchema = new Schema({
         type: String,
         required: true,
     },
-    quantity: Number,
-    soldPrice: Number,
+    quantity: {
+        type: Number,
+        required: true
+    },
+    soldPrice: {
+        type: Number,
+        required: true
+    },
     costPrice: Number,
 },
 {

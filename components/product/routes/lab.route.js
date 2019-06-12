@@ -3,8 +3,8 @@ router = express.Router();
 var labCtrl = require('./../controller/lab.controller');
 
 router.route('/')
-    .get()
-    .post();
+    .get(labCtrl.get)
+    .post(labCtrl.post);
 
 router.route('/search')
     .get()

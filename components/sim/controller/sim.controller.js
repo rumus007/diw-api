@@ -14,7 +14,6 @@ function get(req, res, next){
 
 function post(req, res, next){
     var data = req.body;
-    console.log("data in controller>>", data);
     simQuery.insert(data)
         .then(function(done){
             res.status(200).json(done);
