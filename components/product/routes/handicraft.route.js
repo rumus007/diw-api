@@ -3,8 +3,8 @@ router = express.Router();
 var handicraftCtrl = require('./../controller/handicraft.controller');
 
 router.route('/')
-    .get()
-    .post();
+    .get(handicraftCtrl.get)
+    .post(handicraftCtrl.post);
 
 router.route('/search')
     .get()
