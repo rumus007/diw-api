@@ -10,4 +10,4 @@ router.use('/sim',authenticate,simRoute);
 router.use('/lab',authenticate, labRoute);
 router.use('/handicraft',authenticate, handicraftRoute);
 
-module.exports =router;
+module.exports = router;

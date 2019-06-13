@@ -23,7 +23,22 @@ function post(req, res, next){
         });
 }
 
+function getById(req, res, next){
+    var id = req.params.id;
+    var condition = {
+        _id: id
+    }
+
+    handicraftQuery.find(condition)
+        .then(function(data){
+            res.status(200).json(data);
+        })
+        .catch(function(err){
+            next(err);
+        })
+}
+
 
 module.exports = {
-    post, get
+    post, get, getById
 }

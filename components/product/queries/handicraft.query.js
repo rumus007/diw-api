@@ -30,7 +30,30 @@ function insert(data){
 
 
 function update(id, data){
-
+    return new Promise(function(resolve, reject){
+        handicraftModel.findById(id)
+            .exec(function(err, product){
+                if(err){
+                    reject(err);
+                }else{
+                    if(product){
+                        handicraftMap(product, data);
+                        product.save(function(err, updated){
+                            if(err){
+                                reject(err);
+                            }else{
+                                resolve(updated);
+                            }
+                        }); 
+                    }else{
+                        reject({
+                            message: 'Handicraft product not found',
+                            status: 400
+                        });
+                    }
+                }
+            });
+    });
 }
 
 function remove(id){

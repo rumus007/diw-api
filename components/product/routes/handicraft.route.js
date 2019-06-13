@@ -11,7 +11,7 @@ router.route('/search')
     .post();
     
 router.route('/:id')
-    .get()
+    .get(handicraftCtrl.getById)
     .put()
     .delete();
     
