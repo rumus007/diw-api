@@ -56,8 +56,15 @@ function update(id, data){
     });
 }
 
-function remove(id){
-
+function remove(id,cb){
+    handicraftModel.findByIdAndDelete(id)
+        .exec(function(err, deleted){
+            if(err){
+                cb(err);
+            }else{
+                cb(null, deleted);
+            }
+        });
 }
 
 module.exports = {

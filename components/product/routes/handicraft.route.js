@@ -12,7 +12,7 @@ router.route('/search')
     
 router.route('/:id')
     .get(handicraftCtrl.getById)
-    .put()
-    .delete();
+    .put(handicraftCtrl.put)
+    .delete(handicraftCtrl.remove);
     
 module.exports = router;

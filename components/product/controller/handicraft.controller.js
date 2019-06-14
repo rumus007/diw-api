@@ -38,7 +38,38 @@ function getById(req, res, next){
         })
 }
 
+function put(req, res, next){
+    var id = req.params.id;
+    var data = req.body;
+    handicraftQuery.update(id,data)
+        .then(function(updated){
+            res.status(200).json(updated)
+        })
+        .catch(function(err){
+            next(err);
+        })
+}
+
+
+function remove(req, res, next){
+    var id = req.params.id;
+    handicraftQuery.remove(id, function(err, done){
+        if(err){
+            next(err);
+        }else{
+            if(done){
+                res.status(200).json(done);
+            }else{
+                next({
+                    message: "Cannot find product",
+                    status: 400
+                })
+            }
+        }
+    })
+}
+
 
 module.exports = {
-    post, get, getById
+    post, get, getById, put, remove
 }
